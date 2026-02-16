@@ -13,28 +13,28 @@ Zentara follows a **Modular Monlithic Architecture** powered by Python. It allow
 ### System Architecture
 ```mermaid
 graph TD
-    User[User (Admin/Employee)] -->|HTTPS| UI[Streamlit Frontend]
-    UI -->|Session State| Auth[Auth Module]
-    UI -->|Interactions| Core[Core Logic Modules]
+    User["User (Admin/Employee)"] -->|HTTPS| UI["Streamlit Frontend"]
+    UI -->|"Session State"| Auth["Auth Module"]
+    UI -->|Interactions| Core["Core Logic Modules"]
     
     subgraph "Capabilities Layer"
-        Core --> Payroll[Payroll Engine]
-        Core --> Leave[Leave & Attendance]
-        Core --> Assets[Asset Manager]
-        Core --> Onboard[Onboarding 2.0]
+        Core --> Payroll["Payroll Engine"]
+        Core --> Leave["Leave & Attendance"]
+        Core --> Assets["Asset Manager"]
+        Core --> Onboard["Onboarding 2.0"]
     end
     
     subgraph "Data Persistence Layer"
-        Payroll --> SQL[(SQLite / PostgreSQL)]
+        Payroll --> SQL[("SQLite / PostgreSQL")]
         Leave --> SQL
         Assets --> SQL
         Onboard --> SQL
-        Onboard --> Docs[Local/S3 Document Storage]
+        Onboard --> Docs["Local/S3 Document Storage"]
     end
     
     subgraph "Intelligence Layer"
-        SQL --> Analytics[Pandas Analytics]
-        Analytics --> Dashboard[Executive Dashboard]
+        SQL --> Analytics["Pandas Analytics"]
+        Analytics --> Dashboard["Executive Dashboard"]
     end
 ```
 
